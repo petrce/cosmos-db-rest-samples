@@ -585,7 +585,7 @@ string GenerateMasterKeyAuthorizationSignature(HttpMethod verb, ResourceType res
 {
     var keyType = "master";
     var tokenVersion = "1.0";
-    var payload = $"{verb.ToString().ToLowerInvariant()}\n{resourceType.ToString().ToLowerInvariant()}\n{resourceLink}\n{date.ToLowerInvariant()}\n\n";
+    var payload = $"{verb.ToString().ToLowerInvariant()}\n{resourceType.ToString().ToLowerInvariant()}\n{resourceLink.ToLowerInvariant()}\n{date.ToLowerInvariant()}\n\n";
 
     var hmacSha256 = new System.Security.Cryptography.HMACSHA256 { Key = Convert.FromBase64String(key) };
     var hashPayload = hmacSha256.ComputeHash(System.Text.Encoding.UTF8.GetBytes(payload));
